@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Meghmani Group Key Strengths}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Key Strengths}
+
+\begin{tcolorbox}[colback=white]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for header, content in key_strengths %}
+    \item {{ header }}: {{ content }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

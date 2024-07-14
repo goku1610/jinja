@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{longtable}{|m{3cm}|p{14cm}|} % Adjusted column widths
+    \multirow{3}{*}{\parbox{3cm}{\centering \vspace*{\fill} \textbf{Key Executives} \vspace*{\fill}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for i in range(promoters_dict.names|length) %}
+        \item \textbf{{ promoters_dict.names[i] }}: {{ promoters_dict.experiences[i] }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+\end{longtable}
+
+\end{document}

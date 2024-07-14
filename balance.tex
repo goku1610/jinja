@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Balance Sheet Analysis}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{longtable}{|l|*{5}{>{\raggedleft\arraybackslash}p{1.8cm}|}}
+    \hline
+    \rowcolor{blue!20}
+    \textbf{All figures in INR Cr.} & \textbf{FY-20} & \textbf{FY-21} & \textbf{FY-22} & \textbf{FY-23} & \textbf{FY-24} \\
+    \hline
+    \textbf{Equity and Liabilities} & & & & & \\
+    \hline
+    \textbf{Equity Capital} & \textbf{{ EquityCapital[0] }} & \textbf{{ EquityCapital[1] }} & \textbf{{ EquityCapital[2] }} & \textbf{{ EquityCapital[3] }} & \textbf{{ EquityCapital[4] }} \\
+    \hline
+    Reserves & {{ Reserves[0] }} & {{ Reserves[1] }} & {{ Reserves[2] }} & {{ Reserves[3] }} & {{ Reserves[4] }} \\
+    \hline
+    Borrowings & {{ Borrowings[0] }} & {{ Borrowings[1] }} & {{ Borrowings[2] }} & {{ Borrowings[3] }} & {{ Borrowings[4] }} \\
+    \hline
+    Other Liabilities & {{ OtherLiabilities[0] }} & {{ OtherLiabilities[1] }} & {{ OtherLiabilities[2] }} & {{ OtherLiabilities[3] }} & {{ OtherLiabilities[4] }} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Total Liabilities} & \textbf{{ TotalLiabilities[0] }} & \textbf{{ TotalLiabilities[1] }} & \textbf{{ TotalLiabilities[2] }} & \textbf{{ TotalLiabilities[3] }} & \textbf{{ TotalLiabilities[4] }} \\
+    \hline
+    \textbf{Assets} & & & & & \\
+    \hline
+    Fixed Assets & {{ FixedAssets[0] }} & {{ FixedAssets[1] }} & {{ FixedAssets[2] }} & {{ FixedAssets[3] }} & {{ FixedAssets[4] }} \\
+    \hline
+    CWIP & {{ CWIP[0] }} & {{ CWIP[1] }} & {{ CWIP[2] }} & {{ CWIP[3] }} & {{ CWIP[4] }} \\
+    \hline
+    Investments & {{ Investments[0] }} & {{ Investments[1] }} & {{ Investments[2] }} & {{ Investments[3] }} & {{ Investments[4] }} \\
+    \hline
+    Other Assets & {{ OtherAssets[0] }} & {{ OtherAssets[1] }} & {{ OtherAssets[2] }} & {{ OtherAssets[3] }} & {{ OtherAssets[4] }} \\
+    \hline
+    Inventories & {{ Inventories[0] }} & {{ Inventories[1] }} & {{ Inventories[2] }} & {{ Inventories[3] }} & {{ Inventories[4] }} \\
+    \hline
+    Trade Receivables & {{ TradeReceivables[0] }} & {{ TradeReceivables[1] }} & {{ TradeReceivables[2] }} & {{ TradeReceivables[3] }} & {{ TradeReceivables[4] }} \\
+    \hline
+    Cash Equivalents & {{ CashEquivalents[0] }} & {{ CashEquivalents[1] }} & {{ CashEquivalents[2] }} & {{ CashEquivalents[3] }} & {{ CashEquivalents[4] }} \\
+    \hline
+    Short Term Loans & {{ ShortTermLoans[0] }} & {{ ShortTermLoans[1] }} & {{ ShortTermLoans[2] }} & {{ ShortTermLoans[3] }} & {{ ShortTermLoans[4] }} \\
+    \hline
+    Other Asset Items & {{ OtherAssetItems[0] }} & {{ OtherAssetItems[1] }} & {{ OtherAssetItems[2] }} & {{ OtherAssetItems[3] }} & {{ OtherAssetItems[4] }} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Total Assets} & \textbf{{ TotalAssets[0] }} & \textbf{{ TotalAssets[1] }} & \textbf{{ TotalAssets[2] }} & \textbf{{ TotalAssets[3] }} & \textbf{{ TotalAssets[4] }} \\
+    \hline
+\end{longtable}
+
+\clearpage
+\begin{tcolorbox}[colback = white]
+\textbf{Comments:}
+
+
+\begin{itemize}
+\renewcommand\labelitemi{--}
+{% for comment in commentary %}
+    \item {{ comment }}
+{% endfor %}
+\end{itemize}
+
+\end{tcolorbox}
+
+\end{document}

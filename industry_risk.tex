@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Meghmani Group Industry Risks}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{\underline{Industry Risks}}
+
+\begin{tcolorbox}[colback=white]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for source, risk in industry_risks %}
+    \item \textbf{{ risk.split(': ')[0] }}:
+    \begin{itemize}
+        \item {{ risk.split(': ')[1] }}
+        \item Source: \href{{ source }}{{ source }}
+    \end{itemize}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

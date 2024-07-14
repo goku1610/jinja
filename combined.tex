@@ -1,0 +1,429 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+\usepackage{longtable}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+\geometry{a4paper, margin=0.6in} % Adjust margins if necessary
+
+\title{\textbf{\underline{Credit Appraisal Note}}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{\underline{Company Profile}}
+
+\begin{longtable}{|m{3cm}|p{14cm}|} % Adjusted column widths
+    \hline
+    \multirow{8}{*}{\parbox{3cm}{\centering \textbf{Introduction}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.introduction %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+    \multirow{6}{*}{\parbox{3cm}{\centering \textbf{Core Products and Services}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.core_products_services %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+    \multirow{8}{*}{\parbox{3cm}{\centering \textbf{Primary Revenue}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.primary_revenue %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+    \multirow{8}{*}{\parbox{3cm}{\centering \textbf{Manufacturing Facilities}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.manufactering_facilities %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+    \multirow{2}{*}{\parbox{3cm}{\centering \textbf{Corporate Offices}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.corporate_offices %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+    \multirow{5}{*}{\parbox{3cm}{\centering \textbf{Research and Development}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for item in company_profile.research_dev %}
+        \item {{ item|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+\end{longtable}
+
+\section*{\underline{Key Executives}}
+
+\begin{longtable}{|m{3cm}|p{14cm}|} % Adjusted column widths
+    \hline
+    \multirow{3}{*}{\parbox{3cm}{\centering \vspace*{\fill} \textbf{Key Executives} \vspace*{\fill}}} &
+    \begin{itemize}
+    \renewcommand\labelitemi{--}
+        {% for i in range(promoters_dict.names|length) %}
+        \item {{ promoters_dict.names[i]|escape_latex }}: {{ promoters_dict.experiences[i]|escape_latex }}
+        {% endfor %}
+    \end{itemize} \\
+    \hline
+\end{longtable}
+
+\section*{Key Issues}
+
+\begin{tcolorbox}[colback=white]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for header, content in key_issues %}
+    \item \textbf{{ header|escape_latex }}: {{ content|escape_latex }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Key Strengths}
+
+\begin{tcolorbox}[colback=white]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for header, content in key_strengths %}
+    \item \textbf{{ header|escape_latex }}: {{ content|escape_latex }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Industry Risks}
+
+\begin{tcolorbox}[colback=white]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for source, risk in industry_risks %}
+    \item \textbf{{ source|escape_latex }}: {{ risk|escape_latex }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Brief Financials}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+        \hline
+        \rowcolor{blue!20}
+        \textbf{All figures in INR Cr} & \textbf{FY-20} & \textbf{FY-21} & \textbf{FY-22} & \textbf{FY-23} & \textbf{FY-24} \\
+        \hline
+        {% for item in brief_financials %}
+        {{ item.name }} & {{ item.values[0] }} & {{ item.values[1] }} & {{ item.values[2] }} & {{ item.values[3] }} & {{ item.values[4] }} \\
+        \hline
+        {% endfor %}
+    \end{tabularx}
+\end{table}
+
+\section*{Financial Data}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+        \hline
+        \rowcolor{blue!20}
+        \textbf{Metrics} & {% for year in financial_dict.years %} \textbf{{ year }} & {% endfor %} \\
+        \hline
+        \textbf{Sales} & {% for value in financial_dict.value_sales %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Expenses} & {% for value in financial_dict.value_expenses %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Operating Profit} & {% for value in financial_dict.OperatingProfit %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{OPM (\%)} & {% for value in financial_dict.OPM %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Other Income} & {% for value in financial_dict.OtherIncome %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Interest} & {% for value in financial_dict.Interest %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Depreciation} & {% for value in financial_dict.Depreciation %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Profit Before Tax} & {% for value in financial_dict.ProfitBeforeTax %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Tax (\%)} & {% for value in financial_dict.TaxPercentage %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Net Profit} & {% for value in financial_dict.NetProfit %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{EPS} & {% for value in financial_dict.EPS %} {{ value }} & {% endfor %} \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section*{Commentary on Financial Data}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in financial_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Peer Ratings}
+
+\begin{tcolorbox}[colback=white, colframe=blue!50, title=Peer Ratings]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for item in peer_ratings %}
+    \item \textbf{{ item.company_name|escape_latex }}:
+    \begin{itemize}
+        \item \textbf{Long Term Rating:} {{ item.long_term_rating|escape_latex }}
+        \item \textbf{Short Term Rating:} {{ item.short_term_rating|escape_latex }}
+    \end{itemize}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Commentary on Peer Ratings}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in peer_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Balance Sheet Analysis}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+        \hline
+        \rowcolor{blue!20}
+        \textbf{Metrics} & {% for year in balance_sheet_dict.years %} \textbf{{ year }} & {% endfor %} \\
+        \hline
+        \textbf{Equity Capital} & {% for value in balance_sheet_dict.EquityCapital %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Reserves} & {% for value in balance_sheet_dict.Reserves %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Borrowings} & {% for value in balance_sheet_dict.Borrowings %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Other Liabilities} & {% for value in balance_sheet_dict.OtherLiabilities %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Total Liabilities} & {% for value in balance_sheet_dict.TotalLiabilities %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Fixed Assets} & {% for value in balance_sheet_dict.FixedAssets %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{CWIP} & {% for value in balance_sheet_dict.CWIP %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Investments} & {% for value in balance_sheet_dict.Investments %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Other Assets} & {% for value in balance_sheet_dict.OtherAssets %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Inventories} & {% for value in balance_sheet_dict.Inventories %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Trade Receivables} & {% for value in balance_sheet_dict.TradeReceivables %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Cash Equivalents} & {% for value in balance_sheet_dict.CashEquivalents %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Short Term Loans} & {% for value in balance_sheet_dict.ShortTermLoans %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Other Asset Items} & {% for value in balance_sheet_dict.OtherAssetItems %} {{ value }} & {% endfor %} \\
+        \hline
+        \textbf{Total Assets} & {% for value in balance_sheet_dict.TotalAssets %} {{ value }} & {% endfor %} \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section*{Commentary on Balance Sheet Analysis}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in balance_sheet_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Leverage Ratio}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in leverage_ratio_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Leverage Ratio}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in leverage_ratio_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Performance Ratios}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in performance_ratio_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Performance Ratios}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in performance_ratio_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Activity Ratios}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in activity_ratio_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Activity Ratios}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in activity_ratio_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Valuation Ratios}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in valuation_ratio_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Valuation Ratios}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in valuation_ratio_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{Ownership Structure}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in ownership_structure_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Ownership Structure}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in ownership_structure_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}\section*{Ownership Structure}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in ownership_structure_graphs %}
+    \subfloat[{{ name|escape_latex }}]{\includegraphics[width=0.45\textwidth]{{ url|escape_latex }}}
+    {% endfor %}
+\end{figure}
+
+\section*{Commentary on Ownership Structure}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in ownership_structure_commentary %}
+    \item {{ comment|escape_latex }}
+    {% endfor %}
+\end{tcolorbox}
+
+\section*{\underline{Subsidiary and JV Information}}
+\subsection*{\underline{Subsidiaries}}
+<begin{longtable}{|m{5cm}|m{5cm}|m{5cm}|m{5cm}|}
+    \hline
+    \textbf{Subsidiary Name} & \textbf{Date of Creation} & \textbf{Interest} & \textbf{Location} \\
+    \hline
+    {% for subsidiary in subsidiary_jv_info_data.subsidiary %}
+        {{ subsidiary.subsidiary_name }} & {{ subsidiary.Date_of_Creation }} & {{ subsidiary.Interest }} & {{ subsidiary.Location }} \\
+        \hline
+    {% endfor %}
+</begin{longtable}
+
+\subsection*{\underline{Joint Venture Information}}
+<begin{itemize}
+    {% for jv in subsidiary_jv_info_data.JV_information %}
+        <item> {{ jv }}
+    {% endfor %}
+</end{itemize}
+
+\section*{\underline{Financial Analysis}}
+
+% Profitability Data Table
+\begin{longtable}{|m{5cm}|*{6}{c|}}
+    \hline
+    \textbf{Metric} &
+    {% for metric, values in financial_analysis_data.Profitability.items() %}
+        {% for year in values.Years %}
+            \textbf{{ year }} &
+        {% endfor %}
+        {% break %}
+    {% endfor %}
+    \\
+    \hline
+    {% for metric, values in financial_analysis_data.Profitability.items() %}
+        {{ metric|escape_latex }} &
+        {% for value in values.Values %}
+            {{ value|escape_latex }} &
+        {% endfor %}
+        \\
+        \hline
+    {% endfor %}
+\end{longtable}
+
+% Comments on Financial Analysis
+\textbf{Comments:}
+\begin{itemize}
+    {% for comment in financial_analysis_data.commentary %}
+        \item {{ comment }}
+    {% endfor %}
+\end{itemize}
+\end{document}

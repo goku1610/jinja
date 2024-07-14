@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\geometry{a4paper, margin=0.6in}
+
+\begin{document}
+
+\title{\textbf{Fixed Assets Schedule}}
+\date{}
+\maketitle
+
+\section*{Fixed Assets Schedule Table}
+
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+    \hline
+    \rowcolor{blue!20}
+    \textbf{Category} & \textbf{FY 20} & \textbf{FY 21} & \textbf{FY 22} & \textbf{FY 23} & \textbf{FY 24} \\
+    \hline
+    {% for category, data in fixed_assets.items() %}
+    {{ category }} & {% for value in data.Values %} {{ value }} & {% endfor %} \\
+    \hline
+    {% endfor %}
+\end{tabularx}
+
+\section*{Commentary}
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for comment in commentary %}
+    \item {{ comment }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

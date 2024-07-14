@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Meghmani Group Brief Financials}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+        \hline
+        \rowcolor{blue!20}
+        \textbf{All figures in INR Cr} & \textbf{FY-20} & \textbf{FY-21} & \textbf{FY-22} & \textbf{FY-23} & \textbf{FY-24} \\
+        \hline
+        {% for item in brief_financials %}
+        {{ item.name }} & {{ item.values[0] }} & {{ item.values[1] }} & {{ item.values[2] }} & {{ item.values[3] }} & {{ item.values[4] }} \\
+        \hline
+        {% endfor %}
+    \end{tabularx}
+\end{table}
+
+\end{document}

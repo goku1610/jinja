@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Financial Data}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+        \hline
+        \rowcolor{blue!20}
+        \textbf{All figures in INR Cr} & \textbf{FY-20} & \textbf{FY-21} & \textbf{FY-22} & \textbf{FY-23} & \textbf{FY-24} \\
+        \hline
+        Sales & {{ value_sales[0] }} & {{ value_sales[1] }} & {{ value_sales[2] }} & {{ value_sales[3] }} & {{ value_sales[4] }} \\
+        \hline
+        EBITDA & {{ OperatingProfit[0] }} & {{ OperatingProfit[1] }} & {{ OperatingProfit[2] }} & {{ OperatingProfit[3] }} & {{ OperatingProfit[4] }} \\
+        \hline
+        PAT & {{ NetProfit[0] }} & {{ NetProfit[1] }} & {{ NetProfit[2] }} & {{ NetProfit[3] }} & {{ NetProfit[4] }} \\
+        \hline
+        Total Equity Capital & 25 & 25 & 25 & 25 & 25 \\
+        \hline
+        Non-current liabilities & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        Current liabilities & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        EBT Margin Percentage & {{ OPM[0] }} & {{ OPM[1] }} & {{ OPM[2] }} & {{ OPM[3] }} & {{ OPM[4] }} \\
+        \hline
+        Non-current assets & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        Current assets & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        Total Assets & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        RoE (in \%) & {{ OPM[0] }} & {{ OPM[1] }} & {{ OPM[2] }} & {{ OPM[3] }} & {{ OPM[4] }} \\
+        \hline
+        Current Ratio & {{ value_expenses[0] }} & {{ value_expenses[1] }} & {{ value_expenses[2] }} & {{ value_expenses[3] }} & {{ value_expenses[4] }} \\
+        \hline
+        EBT Margin Percentage & {{ OPM[0] }} & {{ OPM[1] }} & {{ OPM[2] }} & {{ OPM[3] }} & {{ OPM[4] }} \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section*{Commentary}
+
+\begin{tcolorbox}[colback=white, colframe=red!50, title=Commentary]
+    \begin{itemize}
+        {% for comment in commentary %}
+        \item {{ comment }}
+        {% endfor %}
+    \end{itemize}
+\end{tcolorbox}
+
+\end{document}

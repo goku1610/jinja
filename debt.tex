@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\geometry{a4paper, margin=0.6in}
+
+\begin{document}
+
+\title{\textbf{Debt Schedule}}
+\date{}
+\maketitle
+
+\section*{Debt Schedule Table}
+
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+    \hline
+    \rowcolor{blue!20}
+    \textbf{Category} & \textbf{FY 20} & \textbf{FY 21} & \textbf{FY 22} & \textbf{FY 23} & \textbf{FY 24} \\
+    \hline
+    \multicolumn{6}{|c|}{\textbf{Borrowings}} \\
+    \hline
+    Total & {{ borrowings.Total.Values[0] }} & {{ borrowings.Total.Values[1] }} & {{ borrowings.Total.Values[2] }} & {{ borrowings.Total.Values[3] }} & {{ borrowings.Total.Values[4] }} \\
+    \hline
+    Long Term & {{ borrowings.LongTerm.Values[0] }} & {{ borrowings.LongTerm.Values[1] }} & {{ borrowings.LongTerm.Values[2] }} & {{ borrowings.LongTerm.Values[3] }} & {{ borrowings.LongTerm.Values[4] }} \\
+    \hline
+    Short Term & {{ borrowings.ShortTerm.Values[0] }} & {{ borrowings.ShortTerm.Values[1] }} & {{ borrowings.ShortTerm.Values[2] }} & {{ borrowings.ShortTerm.Values[3] }} & {{ borrowings.ShortTerm.Values[4] }} \\
+    \hline
+    Lease Liabilities & {{ borrowings.LeaseLiabilities.Values[0] }} & {{ borrowings.LeaseLiabilities.Values[1] }} & {{ borrowings.LeaseLiabilities.Values[2] }} & {{ borrowings.LeaseLiabilities.Values[3] }} & {{ borrowings.LeaseLiabilities.Values[4] }} \\
+    \hline
+    Other Borrowings & {{ borrowings.OtherBorrowings.Values[0] }} & {{ borrowings.OtherBorrowings.Values[1] }} & {{ borrowings.OtherBorrowings.Values[2] }} & {{ borrowings.OtherBorrowings.Values[3] }} & {{ borrowings.OtherBorrowings.Values[4] }} \\
+    \hline
+    \multicolumn{6}{|c|}{\textbf{Other Liabilities}} \\
+    \hline
+    Total & {{ other_liabilities.Total.Values[0] }} & {{ other_liabilities.Total.Values[1] }} & {{ other_liabilities.Total.Values[2] }} & {{ other_liabilities.Total.Values[3] }} & {{ other_liabilities.Total.Values[4] }} \\
+    \hline
+    Non-Controlling Interest & {{ other_liabilities.NonControllingInterest.Values[0] }} & {{ other_liabilities.NonControllingInterest.Values[1] }} & {{ other_liabilities.NonControllingInterest.Values[2] }} & {{ other_liabilities.NonControllingInterest.Values[3] }} & {{ other_liabilities.NonControllingInterest.Values[4] }} \\
+    \hline
+    Trade Payables & {{ other_liabilities.TradePayables.Values[0] }} & {{ other_liabilities.TradePayables.Values[1] }} & {{ other_liabilities.TradePayables.Values[2] }} & {{ other_liabilities.TradePayables.Values[3] }} & {{ other_liabilities.TradePayables.Values[4] }} \\
+    \hline
+    Advance From Customers & {{ other_liabilities.AdvanceFromCustomers.Values[0] }} & {{ other_liabilities.AdvanceFromCustomers.Values[1] }} & {{ other_liabilities.AdvanceFromCustomers.Values[2] }} & {{ other_liabilities.AdvanceFromCustomers.Values[3] }} & {{ other_liabilities.AdvanceFromCustomers.Values[4] }} \\
+    \hline
+    Other Liability Items & {{ other_liabilities.OtherLiabilityItems.Values[0] }} & {{ other_liabilities.OtherLiabilityItems.Values[1] }} & {{ other_liabilities.OtherLiabilityItems.Values[2] }} & {{ other_liabilities.OtherLiabilityItems.Values[3] }} & {{ other_liabilities.OtherLiabilityItems.Values[4] }} \\
+    \hline
+\end{tabularx}
+
+\section*{Commentary}
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+\begin{itemize}
+
+    \renewcommand\labelitemi{--}
+    {% for comment in commentary %}
+    \item {{ comment }}
+    {% endfor %}
+    \end{itemize}
+\end{tcolorbox}
+
+\end{document}

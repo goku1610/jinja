@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Performance Ratios Analysis}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Performance Ratios}
+
+\begin{figure}[H]
+    \centering
+    {% for name, url in graphs %}
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \href{{ url }}\fbox{\includegraphics[width=\textwidth]{{ name }}}
+    \end{minipage}
+    \hfill
+    {% if loop.index is divisibleby 2 %}
+    \end{figure}
+    \begin{figure}[H]
+    \centering
+    {% endif %}
+    {% endfor %}
+</figure}
+
+\begin{tcolorbox}[colback = white]
+\textbf{Comments:}
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for comment in commentary %}
+    \item {{ comment }}
+    {% endfor %}
+</begin{itemize}
+</tcolorbox}
+
+\end{document}

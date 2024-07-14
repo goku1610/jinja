@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Meghmani Group Peer Ratings}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Peer Ratings}
+
+\begin{tcolorbox}[colback=white, colframe=blue!50, title=Peer Ratings]
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for item in peer_ratings %}
+    \item {{ item.company_name }}:
+    \begin{itemize}
+        \item {Long Term Rating:} {{ item.long_term_rating }}
+        \item {Short Term Rating:} {{ item.short_term_rating }}
+    \end{itemize}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Commentary}
+
+\begin{tcolorbox}[colback=white]
+\subsection*{Comments}
+    \renewcommand\labelitemi{--}
+    {% for comment in commentary %}
+    \item {{ comment }}
+    {% endfor %}
+\end{tcolorbox}
+
+\end{document}

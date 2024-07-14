@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Ownership Structure}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{\underline{Ownership Structure:}}
+
+{% for name, url in graphs %}
+\begin{figure}[H]
+    \centering
+    \href{{ url }}\fbox{\includegraphics[width=1.0\textwidth]{{ name }}}
+\end{figure}
+{% endfor %}
+
+\begin{tcolorbox}[colback = white]
+\textbf{Comments:}
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for comment in commentary %}
+    \item {{ comment }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

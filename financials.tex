@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{longtable}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+\geometry{a4paper, margin=0.6in} % Adjust margins if necessary
+
+\begin{document}
+
+\section*{\underline{Financial Summary}}
+
+\begin{longtable}{|l|*{5}{>{\raggedleft\arraybackslash}p{1.8cm}|}}
+    \hline
+    \rowcolor{blue!20}
+    \textbf{All figures in INR Cr.} & \textbf{FY-20} & \textbf{FY-21} & \textbf{FY-22} & \textbf{FY-23} & \textbf{FY-24} \\
+    \hline
+    \textbf{Assets} & & & & & \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Non-current assets} &
+    {% for item in data['FixedAssets'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    Property, plant and equipment &
+    {% for item in data['FixedAssets'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    Capital work-in-progress &
+    {% for item in data['CWIP'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{Financial assets} & & & & & \\
+    \hline
+    (a) Investments &
+    {% for item in data['Investments'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (b) Trade receivables &
+    {% for item in data['TradeReceivables'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (c) Loans &
+    {% for item in data['ShortTermLoans'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    Other non-current assets &
+    {% for item in data['OtherAssets'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Current assets} &
+    {% for item in data['Inventories'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{Financial Assets} & & & & & \\
+    \hline
+    Inventories &
+    {% for item in data['Inventories'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (a) Investments &
+    {% for item in data['Investments'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (b) Trade receivables &
+    {% for item in data['TradeReceivables'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (c) Cash and cash equivalents &
+    {% for item in data['CashEquivalents'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    Other current assets &
+    {% for item in data['OtherAssetItems'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{TOTAL ASSETS} &
+    {% for item in data['TotalAssets'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{EQUITY AND LIABILITIES} & & & & & \\
+    \hline
+    Equity Share &
+    {% for item in data['EquityCapital'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (a) Equity share capital &
+    {% for item in data['EquityCapital'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    (b) Reserve and Surplus &
+    {% for item in data['Reserves'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    Non-controlling interests &
+    {% for item in data['OtherLiabilities'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Total Equity Capital} &
+    {% for item in data['EquityCapital'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{LIABILITIES} & & & & & \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Non-current liabilities} &
+    {% for item in data['Borrowings'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{Financial liabilities} & & & & & \\
+    \hline
+    (a) Borrowings &
+    {% for item in data['Borrowings'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    Other non-current liabilities &
+    {% for item in data['OtherLiabilities'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{Current liabilities} &
+    {% for item in data['CurrentAssets'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+    \textbf{Financial liabilities} & & & & & \\
+    \hline
+    Other current liabilities &
+    {% for item in data['CurrentAssets'] %}{{ item.Value }} & {% endfor %} \\
+    \hline
+    \rowcolor{yellow!20}
+    \textbf{TOTAL EQUITY AND LIABILITIES} &
+    {% for item in data['TotalAssets'] %}\textbf{{ item.Value }} & {% endfor %} \\
+    \hline
+\end{longtable}
+
+\end{document}

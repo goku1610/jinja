@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\geometry{a4paper, margin=0.6in}
+
+\begin{document}
+
+\title{\textbf{Subsidiary and JV Information}}
+\date{}
+\maketitle
+
+\section*{Subsidiary Information}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
+    \hline
+    \rowcolor{blue!20}
+    \textbf{Subsidiary Name} & \textbf{Date of Creation} & \textbf{Interest} & \textbf{Location} \\
+    \hline
+    {% for subsidiary in subsidiary %}
+    {{ subsidiary.subsidiary_name }} & {{ subsidiary.Date_of_Creation }} & {{ subsidiary.Interest }} & {{ subsidiary.Location }} \\
+    \hline
+    {% endfor %}
+\end{tabularx}
+
+\section*{JV Information}
+\begin{tcolorbox}[colback=white]
+\subsection*{JV Details}
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    {% for info in JV_information %}
+    \item {{ info }}
+    {% endfor %}
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}
